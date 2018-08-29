@@ -28,3 +28,5 @@ plot(x,z,'r:'); %Plot x & z with a red dot line
 xlabel('x'); % X label
 ylabel('y(x), z(x)'); %Y Labe
 hold off
+set(gca, 'FontSize', 30)
+saveas(gcf, 'ex1.png', 'png');
