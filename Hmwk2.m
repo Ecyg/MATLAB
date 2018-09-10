@@ -1,56 +1,43 @@
 %Matthew Moore
 %Homework Assignment 2
-%Random Walk
+%Fibonaci Sequence
 
-%Figure 1 is Normal Distribution - 1 person
-%Figure 2 is Normal Distrubution - 10 people
+%Clean this up a little
 
-%Figure 3 is Uniform Distriibution - 1 person
-%Figure 4 is Uniform Distribution - 10 people
+imax = 26;
+fib = (1:imax); % Vector from 1 to imax. Default jump is +1
+fib(1) = 1; %First element of fib is 1
+fib(2) = 1; %Second element of fib is 1
+golden = (1+sqrt(5))/2;
 
-% Using NORMAL DISTRUBUTION, N(0,1) [Mean is 0, Standard Deviation is 1]
-% make a random walk for 1000 steps. Imagine a drunk sailor walking home
-%Plot this
-clear all
-mu = 0;
-sigma = 1;
-x = 0;
-nmax = 1000;
-for n = 1 : nmax-1
-   x(n+1) = x(n)+(mu+sigma*randn);
+%Create the Fibonacci array
+for i = (1:imax-2)
+    fib(i+2) = fib(i) + fib(i+1);
 end
-figure(1)
-plot(1:nmax,x)
-title('Random Walk with Normal Distrubution')
-xlabel('Steps')
+fib'
 
 
+%Golden
+
+%Ok, we now have an array of the fib sequence contained in "fib"
+%Place in a new array and divide each new term by it's previous
+ratio=[];
 
 
-
-%Repeat the first part 10 times and combine them all into one graph
-%What do you observe and conclude?
-all = 10;
-for path = 1:all
-   for n = 1:nmax-1
-      x(n+1) = x(n)+(mu+sigma*randn); 
-   end
-   figure(2)
-   plot(1:nmax,x)
-   hold on
+%Loop through the fib array and make the golden ratio array
+for i = [1:numel(fib)-1]
+    ratio(i) = fib(i+1)/(fib(i));
+    
+    
 end
-title('Random Walk with Normal Distrubution - 10 people')
-xlabel('Steps')
-grid on
-hold off
 
+%This is our check. This goes through and checks if each element of ratio
+% minus golden is less than 10^-10
+abs(ratio-golden) < 10^-10
 
+ratio;
+golden;
 
-%Plot a random walk for a drunk sailor by using UNIFORM DISTRIBUTION 
-% over [0,1] for 1000 steps. Plot this.
-
-
-
-
-%If you repeat the above process 10 times, combine them into 1 plot. 
-% What do you observe and conclude.
+% n = 26 as it is the first to contain a true statement (this is based of
+%our max array size 'imax', which also means how far into the fibonacci 
+%sequence we go)
