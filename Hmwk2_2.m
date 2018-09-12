@@ -72,7 +72,7 @@ for path = 1:all
    plot(1:nmax2,x2)
    hold on
 end
-title('Random Walk with Normal Distrubution - 10 people')
+title('Random Walk with Uniform Distrubution - 10 people')
 xlabel('Steps')
 grid on
 hold off
