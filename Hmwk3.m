@@ -1,4 +1,3 @@
-
 % Hmwk 3 
 clear all
 
@@ -20,6 +19,7 @@ else
        x(a+1) = mu1*(1-x(a)); 
     end
 end
+figure(1)
 plot(1:nmax,x)
 
 % Mu 2
@@ -32,6 +32,7 @@ else
        y(b+1) = mu2*(1-y(b)); 
     end
 end
+figure(2)
 plot(1:nmax,y)
 
 % Mu 3
@@ -44,4 +45,5 @@ else
        z(c+1) = mu3*(1-z(c)); 
     end
 end
+figure(3)
 plot(1:nmax,z)
