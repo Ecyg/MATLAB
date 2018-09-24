@@ -84,7 +84,7 @@ x'
 %Part 5 - Mu value that shows 3 cycle
 clear all
 Nmax = 100;
-mu = 4.6;
+mu = 2.32;
 x(1) = rand;
 
 for i = 1 : Nmax -1
