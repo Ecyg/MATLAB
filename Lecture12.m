@@ -71,27 +71,52 @@ ylabel('y_2');
 %   Animation for this?
 %----------------------------
 
+figure(23)
+plot3(t, y(:,1), y(:,2))
+grid on
 
 
+%-------------------
+% 2D animation for Van Der Pol
+%---------------------
 
+j = 1; %j = 2 is y, j=1 is x
+figure(30)
+plot(t, y(:,j))
+grid on
+hold on
 
+%-----Animation Section------
+bead = line(t, y(:,j), 'marker', 'o', 'markersize', 8);
+trail = line(t, y(:,j), 'marker', '.', 'color', 'r');
 
-
-function [dy] = rigid2(t,y)
-  global alpha
-  eq1 = y(2)*y(3);
-  eq2 = -y(1)*y(3);
-  eq3 = alpha*y(1)*y(2);
-  dy = [eq1;eq2;eq3];
-
+for k = 1 : length(y)
+   set(bead, 'xdata', t(k), 'ydata', y(k,j));
+   set(trail, 'xdata', t(1:k), 'ydata', y(1:k,j));
+    drawnow;
 end
 
+hold off
 
 
 
-function dy = vanderpol(t,y)
-    global mu
-    eq1 = y(2);
-    eq2 = mu*(1-y(1)^2)*y(2)-y(1);
-    dy = [eq1;eq2];
+%-------------------
+% 3D animation for Van Der Pol
+%---------------------
+
+figure(40)
+plot3(t, y(:,1), y(:,2))
+grid on
+hold on
+
+%-----Animation Section------
+bead = line(t, y(:,1), y(:,2), 'marker', 'o', 'markersize', 8);
+trail = line(t, y(:,j), y(:,2),'marker', '.', 'color', 'r');
+
+for k = 1 : length(y)
+   set(bead, 'xdata', t(k), 'ydata', y(k,1), 'zdata', y(k,2));
+   set(trail, 'xdata', t(1:k), 'ydata', y(1:k,1), 'zdata', y(1:k,2));
+    drawnow;
 end
+
+hold off
