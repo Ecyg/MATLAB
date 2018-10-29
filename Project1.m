@@ -105,6 +105,8 @@ end
 hold off
 %}
 
+
+%What's the ending value of the plotted Oscillator and the difference of 0.01 Oscillator  
 y(end)
 y2(end)
 
