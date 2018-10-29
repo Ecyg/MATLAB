@@ -93,3 +93,78 @@ xlabel('time');
 ylabel('voltage');
 ylim([-0.5 1.5])
 hold off
+
+
+
+%------------------
+% V' V^2 +I
+% -----------------
+clear all
+I = 2; % Input Current I
+Vth = 1; 
+Vr = 0;
+V(1) = rand; %Initial Condition randomly in [0,1]
+dt = 0.01; %time step
+t = 0:dt:10; % run for an interval of time
+Nmax = length(t);
+
+for k = 1:Nmax-1
+   if(V(k) >= Vth)
+      V(k) = Vth;
+      %disp('reach threshold and fire!')
+      V(k+1) = Vr;
+   else
+       V(k+1) = V(k)+dt*(V(k)^2 +I);
+   end % end if/else
+    
+end % end for loop
+
+
+figure(10)
+plot(t,V)
+grid on
+hold on
+plot([0 10] ,[Vth Vth], 'g--');
+title('LIF Neuron Model : Quadratic')
+xlabel('time'); 
+ylabel('voltage');
+ylim([-0.1 1.5])
+hold off
+
+
+
+%----------With noise-----------
+
+clear all
+I = 2;
+Vth = 1;
+Vr = 0;
+V(1) = rand;
+D = 0.3;  % Noise intensity
+
+dt = 0.01;
+t = 0:dt:10;
+Nmax = length(t);
+
+for k = 1:Nmax-1
+   if(V(k) >= Vth)
+       V(k) = Vth;
+       disp('reach threshold and fire !')
+       V(k+1) = Vr;
+   else
+       V(k+1) = V(k)+dt*(V(k)^2 +I)+sqrt(2*D*dt)*randn;
+       
+   end
+    
+end
+
+figure(20)
+plot(t,V)
+grid on
+hold on
+plot([0 10], [Vth Vth], 'g--');
+title('LIF Neuron Model with Noise : Quadratic')
+xlabel('time');
+ylabel('voltage');
+ylim([-0.6 1.1])
+hold off
